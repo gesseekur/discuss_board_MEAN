@@ -1,0 +1,11 @@
+<div ng-controller="userController">
+	
+	<strong><p>Username: <span ng-bind="user.name"></span></p></strong>
+
+	<p>Posted...</p>
+	<ul>
+		<p><span ng-bind="user.topics.length"></span> Topic(s)</p>
+		<p><span ng-bind="user.posts.length"></span> Post(s)</p>
+		<p><span ng-bind="user.comments.length"></span> Comment(s)</p>
+	</ul>
+</div>

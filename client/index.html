@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>Dashboard</title>
+	<script type="text/javascript" src="/js/lib/angular.js"></script>
+	<script type="text/javascript" src="/js/lib/angular-route.js"></script>
+	<script type="text/javascript" src="/js/app.js"></script>
+	<script type="text/javascript" src="/js/factories/userFactory.js"></script>
+	<script type="text/javascript" src="/js/factories/topicFactory.js"></script>
+	<script type="text/javascript" src="/js/controllers/userController.js"></script>
+	<script type="text/javascript" src="/js/controllers/loginController.js"></script>
+	<script type="text/javascript" src="/js/controllers/topicController.js"></script>
+	<script type="text/javascript" src="/js/controllers/mainController.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/main.css">
+</head>
+<body ng-controller="loginController as user">
+	<!-- <h1> Main </h1>
+	<nav>
+		<a href="#/">Home</a>
+		<a href="#/users">Users</a>
+	</nav> -->
+
+	<div ng-view="">
+		
+	</div>
+</body>
+</html>

@@ -1,0 +1,11 @@
+<div ng-controller="loginController as users">
+	<form ng-submit="users.requestName(users.input)">
+		<div ng-if="users.error">
+			<span ng-bind="users.error.errors.name.message"></span>
+		</div>
+		<p>Please submit a username: 
+			<input type="text" ng-model="users.input.name">
+		</p>
+		<button>Submit</button>
+	</form>
+</div>

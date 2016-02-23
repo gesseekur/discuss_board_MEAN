@@ -1,0 +1,48 @@
+<div ng-controller="topicController">
+	<a ng-href="#/user/{{topics.user_id}}" ng-bind="topics.name" ></a> posted a topic:
+	<p><strong><span ng-bind="topics.title"></span></strong></p>
+	<p>Description:<span ng-bind="topics.description"></span></p>
+
+	<p>Post your answer here:</p>
+	<form ng-submit="createPost(newPost, topics._id, currentUser)">
+		<textarea ng-model="newPost.post" cols="30" rows="10"></textarea>
+		<p><button>Submit Post</button></p>
+	</form>
+
+	<hr>
+	<div ng-repeat="post in posts | orderBy: created_at: reverse">
+		<strong>
+			<a ng-href="#/user/{{post.user_id}}" ng-bind="post.name"></a></strong>
+		(<span ng-bind="post.created_at | date: 'MMMM, dd, yyyy'"></span>)
+		: <span ng-bind="post.post"></span>
+		<div ng-if="post.user_id != currentUser._id">
+		<p>
+		<span ng-bind="post.like"></span>
+			<form ng-submit="postLikes(post._id)">
+				<button>Like</button>
+			</form>
+		<span ng-bind="post.dislike"></span>
+		<form ng-submit="postDislikes(post._id)">
+			<button>Dislike</button>
+		</form>
+		</p>
+		</div>
+
+		<div style="margin-left:10%" ng-repeat="comm in post.comments">
+			<div ng-repeat="comment in comm| orderBy: comment.created_at">
+			<strong><a ng-href="#/user/{{comment.user_id}}" ng-bind="comment.name"></a></strong>:
+			<span ng-bind="comment.created_at|date:'MMMM, dd, yyyy'"></span>
+			<p ng-bind="comment.comment"></p>
+			</div>
+		</div>
+		<div style="margin-left:10%" ng-if="post">
+			<p>Post a comment...</p>
+			<form>
+			<textarea ng-model="newComment.comment" cols="30" rows="10"></textarea>	
+			<button ng-click="createComment(newComment,post,currentUser)">Comment</button>
+			</form>
+		</div>
+		<hr>
+
+	</div>
+</div>

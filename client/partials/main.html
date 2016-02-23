@@ -1,0 +1,44 @@
+<div ng-controller="mainController">
+	
+<h1>Welcome, <span ng-bind="currentUser.name"></span>! </h1>
+<input type='text' placeholder='search...' ng-model='filter_name'>
+
+<table>
+	<thead>
+		<tr>
+			<th>Category</th>
+			<th>Topic</th>
+			<th>Username</th>
+			<th>Posts</th>
+		</tr>
+	</thead>
+	<tbody ng-repeat="topic in topics|filter:filter_name| orderBy: created_at: reverse">
+		<tr>
+			<td ng-bind="topic.category"></td>
+			<td><a ng-href="#/topic/{{topic._id}}" ng-bind="topic.title"></a></td>
+			<td><a ng-href="#/user/{{topic.user_id._id}}" ng-bind="topic.user_id.name"></td></a>
+			<td ng-bind="topic.posts"></td>
+		</tr>
+	</tbody>
+</table>
+
+
+<form ng-submit="createTopic(newTopic, currentUser)">
+	<p>Topic: 
+		<input type="text" ng-model="newTopic.title">
+	</p>
+	<p> Description
+		<textarea ng-model="newTopic.description" cols="30" rows="10"></textarea>
+	</p>
+	<p> Category:
+		<select ng-model="newTopic.category">
+			<option value="HTML">HTML</option>
+			<option value="CSS">CSS</option>
+			<option value="Ruby on Rails">Ruby on Rails</option>
+			<option value="PHP">PHP</option>
+			<option value="Javascript">Javascript</option>
+		</select>
+	</p>
+	<button>Add Topic</button>
+</form>
+</div>
